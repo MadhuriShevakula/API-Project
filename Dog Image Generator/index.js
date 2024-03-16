@@ -43,7 +43,7 @@ app.get("/random", async (req, res) => {
         } else if (breed) {
             endpoint = `breed/${breed}/images/random`;
         }
-        console.log(breed)
+        // console.log(breed)
         const response = await axios.get(`${baseURL}${endpoint}`);
         const imgURL = response.data.message;
         res.render("index.ejs", { breeds, imgURL,  breed});

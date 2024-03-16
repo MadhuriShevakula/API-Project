@@ -1,50 +1,87 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 20px;
-    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
 }
 
-.random-dog-form {
-    margin-bottom: 20px;
-}
-
+/* Form styles */
 .dog-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 20px;
 }
 
-.breed-label,
-.subbreed-label {
+.breed-label, .subbreed-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.breeds-select, .subbreeds-select {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.breeds-select,
-.subbreeds-select,
+.generate-btn, .random-dog-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
 .generate-btn {
-    margin-bottom: 20px;
-    font-size: 16px;
-    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
 }
 
+.generate-btn:hover {
+    background-color: #0056b3;
+}
+
+.random-dog-btn {
+    background-color: #ff6b6b;
+    color: #fff;
+}
+
+.random-dog-btn:hover {
+    background-color: #e24e4e;
+}
+
+/* Image styles */
 .image-container {
     margin-top: 20px;
+    text-align: center;
 }
 
 .dog-image {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Error message styles */
 .error {
-    color: red;
+    color: #dc3545;
+    text-align: center;
     font-style: italic;
 }

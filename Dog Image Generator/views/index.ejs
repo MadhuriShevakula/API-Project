@@ -11,7 +11,7 @@
 <div class="container">
     <h1>Dog Image Generator</h1>
     <form action="/random" method="get" class="random-dog-form">
-        <button type="submit" class="random-dog">Random Dog</button>
+        <button type="submit" class="random-dog-btn">Random Dog</button>
     </form>
 
     <form action="/random" method="get" class="dog-form">
@@ -25,14 +25,7 @@
         <label for="subbreed" class="subbreed-label">Select Sub-breed:</label>
         <select name="subbreed" id="subbreed" class="subbreeds-select">
            
-            <% if(breed && breeds[breed].length > 0){ %>
-                <option value="" class="subbreed-opt">None</option>
-                <% breeds[breed].forEach(subbreed => { %>
-                    <option value="<%= subbreed %>" class="subbreed-opt"><%= subbreed %></option>
-                <% }) %>
-            <% }else { %>
-                <option value="" disabled>No sub-breeds</option>
-            <% } %>
+            
         </select>
 
         <button type="submit" class="generate-btn">Generate Image</button>
@@ -57,7 +50,7 @@
     const subBreedSelect = document.getElementById('subbreed');
 
     breedSelect.addEventListener('change', (event) => {
-          const selectedBreed = event.target.value;
+        const selectedBreed = event.target.value;
         if (selectedBreed) {
             updateSubBreeds(selectedBreed);
         } else {
@@ -77,13 +70,25 @@
 
     const renderSubBreeds = (subBreeds) => {
         subBreedSelect.innerHTML = '';
-        subBreeds.forEach(subBreed => {
+
+        // Check if there are sub-breeds available
+        if (subBreeds.length > 0) {
+            // If there are sub-breeds, render each sub-breed
+            subBreeds.forEach(subBreed => {
+                const option = document.createElement('option');
+                option.value = subBreed;
+                option.textContent = subBreed;
+                option.className = 'subbreed-opt';
+                subBreedSelect.appendChild(option);
+            });
+        } else {
+            // If there are no sub-breeds, render the "No sub-breeds" option
             const option = document.createElement('option');
-            option.value = subBreed;
-            option.textContent = subBreed;
-            option.className = 'subbreed-opt';
+            option.value = ''; // Set value to null or empty string as desired
+            option.textContent = 'No sub-breeds';
+            option.disabled = true;
             subBreedSelect.appendChild(option);
-        });
+        }
     }
 
     const clearSubBreeds = () => {
