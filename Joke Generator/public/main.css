@@ -1,0 +1,88 @@
+/* main container */
+.main-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* form */
+.joke-generator-form {
+    margin-bottom: 20px;
+}
+
+/* labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* select inputs */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* button */
+button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* button hover effect */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* generated joke container */
+.joke-container {
+    margin-top: 20px;
+}
+
+/* joke generated section */
+.joke-generated {
+    margin-bottom: 15px;
+}
+
+/* error message section */
+.error-generated {
+    color: red;
+    font-weight: bold;
+}
+
+/* Header */
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Joke title */
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Joke setup */
+.joke-setup {
+    font-style: italic;
+}
+
+/* Joke delivery */
+.joke-delivery {
+    font-weight: bold;
+}
