@@ -1,0 +1,50 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.random-dog-form {
+    margin-bottom: 20px;
+}
+
+.dog-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.breed-label,
+.subbreed-label {
+    margin-bottom: 10px;
+}
+
+.breeds-select,
+.subbreeds-select,
+.generate-btn {
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+.image-container {
+    margin-top: 20px;
+}
+
+.dog-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    color: red;
+    font-style: italic;
+}
