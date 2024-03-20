@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Image Generator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    
+<div class="container">
+    <h1>Dog Image Generator</h1>
+    <form action="/random" method="get" class="random-dog-form">
+        <button type="submit" class="random-dog-btn">Random Dog</button>
+    </form>
+
+    <form action="/random" method="get" class="dog-form">
+        <label for="breed" class="breed-label">Select Breed:</label>
+        <select name="breed" id="breed" class="breeds-select">
+            <% Object.keys(breeds).forEach(breed => { %>
+                <option value="<%= breed %>" class="breed-opt"><%= breed %></option>
+            <% }); %>
+        </select>
+
+        <label for="subbreed" class="subbreed-label">Select Sub-breed:</label>
+        <select name="subbreed" id="subbreed" class="subbreeds-select">
+           
+            
+        </select>
+
+        <button type="submit" class="generate-btn">Generate Image</button>
+    </form>
+
+    <div class="image-container">
+        <% if(locals.imgURL){ %>
+            <img src="<%= imgURL %>" alt="<%= breed %>" class="dog-image">
+        <% }else if(locals.error){%>
+            <p class="error"><%= error %></p>
+        <% } %>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    let breeds;
+    let baseURL = 'https://dog.ceo/api/';
+
+    const breedSelect = document.getElementById('breed');
+    const subBreedSelect = document.getElementById('subbreed');
+
+    breedSelect.addEventListener('change', (event) => {
+        const selectedBreed = event.target.value;
+        if (selectedBreed) {
+            updateSubBreeds(selectedBreed);
+        } else {
+            clearSubBreeds();
+        }
+    });
+
+     const updateSubBreeds = async (selectedBreed) => {
+        try {
+            const response = await axios.get(`${baseURL}breed/${selectedBreed}/list`);
+            const subBreeds = response.data.message;
+            renderSubBreeds(subBreeds);
+        } catch (error) {
+            console.error('Failed to fetch sub-breeds:', error);
+        }
+    }
+
+    const renderSubBreeds = (subBreeds) => {
+        subBreedSelect.innerHTML = '';
+
+        // Check if there are sub-breeds available
+        if (subBreeds.length > 0) {
+            // If there are sub-breeds, render each sub-breed
+            subBreeds.forEach(subBreed => {
+                const option = document.createElement('option');
+                option.value = subBreed;
+                option.textContent = subBreed;
+                option.className = 'subbreed-opt';
+                subBreedSelect.appendChild(option);
+            });
+        } else {
+            // If there are no sub-breeds, render the "No sub-breeds" option
+            const option = document.createElement('option');
+            option.value = ''; // Set value to null or empty string as desired
+            option.textContent = 'No sub-breeds';
+            option.disabled = true;
+            subBreedSelect.appendChild(option);
+        }
+    }
+
+    const clearSubBreeds = () => {
+        subBreedSelect.innerHTML = '';
+    }
+
+</script>
+</body>
+</html>
